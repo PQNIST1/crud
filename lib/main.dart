@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:qlsv/screen.dart';
+import 'package:provider/provider.dart';
+import 'package:qlsv/QLSV/screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'QLSV/search/search.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,20 +27,23 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: _pages[_currentIndex], // Hiển thị trang hiện tại
-        bottomNavigationBar: CustomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (int index) {
-            // Gọi khi một tab được chọn
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-        ),
-      ),
+    return ChangeNotifierProvider(
+        create: (context) => SearchStudent(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            body: _pages[_currentIndex], // Hiển thị trang hiện tại
+            bottomNavigationBar: CustomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (int index) {
+                // Gọi khi một tab được chọn
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+          ),
+        )
     );
   }
 }

@@ -23,10 +23,12 @@ class _TabBarWidgetState extends State<TabBarCustom> {
         color: Colors.transparent,
       ),
       onTap: (index) {
+        DefaultTabController.of(context)!.animateTo(index);
         setState(() {
           _currentIndex = index;
         });
       },
+
     );
   }
 }

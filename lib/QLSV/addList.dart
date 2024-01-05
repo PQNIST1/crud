@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:qlsv/screen.dart';
+import 'package:qlsv/QLSV/screen.dart';
 class AddListStudent extends StatefulWidget{
   @override
   _AddListWidget createState() => _AddListWidget();
@@ -223,8 +223,7 @@ class _AddListWidget extends State<AddListStudent> {
                           controller: idController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                            hintText: '',
-                            border: InputBorder.none,
+                            hintText: '',                            border: InputBorder.none,
                           ),
                         ),
                       ),

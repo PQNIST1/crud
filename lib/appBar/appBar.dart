@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:qlsv/addList.dart';
-import 'package:qlsv/tabBar.dart';
+import 'package:qlsv/QLSV/addList.dart';
+import 'package:qlsv/appBar/tabBar.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
+  final Function(String) onSearch;
+
+  CustomAppBar({required this.onSearch});
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
 
@@ -11,6 +14,16 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+  TextEditingController searchController = TextEditingController();
+  void performSearch() {
+    if (searchController.text.isNotEmpty) {
+      // Gọi hàm tìm kiếm và truyền nội dung tìm kiếm
+      widget.onSearch(searchController.text);
+    } else {
+      // Nếu ô tìm kiếm rỗng, hiển thị toàn bộ danh sách
+      widget.onSearch('');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
@@ -60,15 +73,24 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           child: Padding(
                             padding: EdgeInsets.only(),
                             child: TextFormField(
+                              controller: searchController,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFF3F4F6),
                                 hintText: 'Enter keyword to find out...',
                                 border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(left: 50,top: 5),
-                                suffixIcon: Icon(Icons.search, color: Color(0xFFEDAC02)),
+                                contentPadding: EdgeInsets.only(left: 50,top: 5,bottom: 15),
                               ),
                             ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            performSearch();
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Icon(Icons.search, color: Color(0xFFEDAC02)),
                           ),
                         ),
                       ],

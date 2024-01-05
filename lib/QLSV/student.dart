@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:qlsv/QLSV/screen.dart';
 import 'dart:convert';
-
-import 'package:qlsv/screen.dart';
 class StudentInfo extends StatefulWidget {
   final String id;
   final String address;
@@ -13,17 +12,17 @@ class StudentInfo extends StatefulWidget {
   final String classes;
   final String fullName;
   final  List<dynamic> categoriess;
- StudentInfo({
-  Key? key,
-   required this.id,
-  required this.address,
-  required this.email,
-  required this.phoneNumber,
-  required this.averageScore,
-  required this.dateOfBirth,
-  required this.classes,
-   required this.fullName,
-   required this.categoriess,
+  StudentInfo({
+    Key? key,
+    required this.id,
+    required this.address,
+    required this.email,
+    required this.phoneNumber,
+    required this.averageScore,
+    required this.dateOfBirth,
+    required this.classes,
+    required this.fullName,
+    required this.categoriess,
   }) : super(key: key);
 
   @override
@@ -107,8 +106,8 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ListStudentScreen()),
-        );
+            builder: (context) => ListStudentScreen()),
+      );
     }
   }
   Future<void> removeStudent(String id) async {
@@ -162,14 +161,14 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                         Padding(
+                        Padding(
                           padding: EdgeInsets.only(bottom: 1,top: 5,left: 35),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                   widget.fullName,
-                                style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black)
+                                  style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black)
                               ),
                               SizedBox(height: 5),
                               Text(
@@ -241,7 +240,7 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
                 ],
               ),
               child:  Text(
-                   "${widget.averageScore}",
+                "${widget.averageScore}",
                 style: TextStyle(fontSize: 8,fontWeight: FontWeight.w700,color: Colors.white),
               ),
             ),
@@ -256,7 +255,7 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
       builder: (BuildContext context) {
         return AlertDialog(
           content: Text('Are you sure to delete this student?',style: TextStyle(
-            color: Color(0xFF002184),fontSize: 15
+              color: Color(0xFF002184),fontSize: 15
           ),),
           actions: <Widget>[
             Container(
@@ -282,12 +281,12 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
               margin: EdgeInsets.only(right: 20,bottom: 5),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                border: Border.all(
-                  color: Color(0xFF002184),
-                  width: 2
-                )
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border.all(
+                      color: Color(0xFF002184),
+                      width: 2
+                  )
               ),
               child: TextButton(
                 child: Text('Cancel',style: TextStyle(color: Color(0xFF002184),fontWeight: FontWeight.bold),),
@@ -307,91 +306,64 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
   }
   Widget info() => DraggableScrollableSheet(
     initialChildSize: 0.81,
-      builder: (_,controller) => Container(
-          decoration:const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(46),
-              topRight: Radius.circular(46),
-            ),
-            color: Color(0xFF002184),
+    builder: (_,controller) => Container(
+        decoration:const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(46),
+            topRight: Radius.circular(46),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10,bottom: 10),
-                child: Text('Edit Student Information',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Color(0xFF96C0FF)),),
-              ),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text('Full name',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+          color: Color(0xFF002184),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 10,bottom: 10),
+              child: Text('Edit Student Information',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Color(0xFF96C0FF)),),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Text('Full name',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                  ),
+                  Container(
+                    width: 323,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
                     ),
-                    Container(
-                      width: 323,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                      ),
 
-                      child: TextField(
-                        controller: fullNameController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                          hintText: widget.fullName,
-                          border: InputBorder.none,
-                        ),
+                    child: TextField(
+                      controller: fullNameController,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 15,left: 10),
+                        hintText: widget.fullName,
+                        border: InputBorder.none,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Container(
-                margin: EdgeInsets.only(left: 25,top: 10),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text('Class',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
-                          ),
-                          Container(
-                            width: 170,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-
-                            child: TextField(
-                              controller: classNameController,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                                hintText: widget.classes,
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 25,top: 10),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 10),
-                          child: Text('Student Id',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                          child: Text('Class',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                         ),
                         Container(
-                          width: 130,
+                          width: 170,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -399,61 +371,61 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
                           ),
 
                           child: TextField(
-                            controller: idController,
+                            controller: classNameController,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                              hintText: widget.id,
+                              hintText: widget.classes,
                               border: InputBorder.none,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 25,top: 10),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text('Email',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
-                          ),
-                          Container(
-                            width: 170,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-
-                            child: TextField(
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                                hintText: widget.email,
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Text('Student Id',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                       ),
-                    ),
-                    Column(
+                      Container(
+                        width: 130,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+
+                        child: TextField(
+                          controller: idController,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 15,left: 10),
+                            hintText: widget.id,
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 25,top: 10),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 10),
-                          child: Text('Date of Birth',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                          child: Text('Email',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                         ),
                         Container(
-                          width: 130,
+                          width: 170,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -461,61 +433,61 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
                           ),
 
                           child: TextField(
-                            controller: dobController,
+                            controller: emailController,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                              hintText: '${widget.dateOfBirth}',
+                              hintText: widget.email,
                               border: InputBorder.none,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 25,top: 10),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text('Address',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
-                          ),
-                          Container(
-                            width: 170,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-
-                            child: TextField(
-                              controller: addressController,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                                hintText:widget.address,
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Text('Date of Birth',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                       ),
-                    ),
-                    Column(
+                      Container(
+                        width: 130,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+
+                        child: TextField(
+                          controller: dobController,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 15,left: 10),
+                            hintText: '${widget.dateOfBirth}',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 25,top: 10),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 10),
-                          child: Text('Phone number',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                          child: Text('Address',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                         ),
                         Container(
-                          width: 130,
+                          width: 170,
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -523,154 +495,181 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
                           ),
 
                           child: TextField(
-                            controller: phoneController,
+                            controller: addressController,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                              hintText:widget.phoneNumber,
+                              hintText:widget.address,
                               border: InputBorder.none,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10, top: 10),
-                      child: Text('Average mark',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
-                    ),
-                    Container(
-                      width: 323,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Text('Phone number',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
                       ),
+                      Container(
+                        width: 130,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
 
-                      child: TextField(
-                        controller: avgController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 15,left: 10),
-                          hintText: '${widget.averageScore}',
-                          border: InputBorder.none,
+                        child: TextField(
+                          controller: phoneController,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 15,left: 10),
+                            hintText:widget.phoneNumber,
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
-              Container(
-                width: 323  ,
-                margin: EdgeInsets.only(top:10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text('List subjects',style:  TextStyle(fontSize: 12,fontWeight: FontWeight.w700,color: Colors.white),),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10, top: 10),
+                    child: Text('Average mark',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.white),),
+                  ),
+                  Container(
+                    width: 323,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
                     ),
-                    Wrap(
-                      runSpacing: 8,
-                      spacing: 8,
-                      direction: Axis.horizontal,
-                      children: [
-                        ...subjectsWithCheck.map((subject) {
-                          if (subject["isChecked"] == true) {
-                            return Container(
-                              alignment: Alignment.center,
-                              width: 88,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                color: Colors.white,
-                              ),
-                              child: Text(
-                                subject["name"],
-                                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Color(0xFF002184)),
-                              ),
-                            );
+
+                    child: TextField(
+                      controller: avgController,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 15,left: 10),
+                        hintText: '${widget.averageScore}',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: 323  ,
+              margin: EdgeInsets.only(top:10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Text('List subjects',style:  TextStyle(fontSize: 12,fontWeight: FontWeight.w700,color: Colors.white),),
+                  ),
+                  Wrap(
+                    runSpacing: 8,
+                    spacing: 8,
+                    direction: Axis.horizontal,
+                    children: [
+                      ...subjectsWithCheck.map((subject) {
+                        if (subject["isChecked"] == true) {
+                          return Container(
+                            alignment: Alignment.center,
+                            width: 88,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white,
+                            ),
+                            child: Text(
+                              subject["name"],
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Color(0xFF002184)),
+                            ),
+                          );
+                        } else {
+                          return SizedBox.shrink();  // Widget trống cho các mục không được chọn
+                        }
+                      }).toList(),
+                      GestureDetector(
+                        onTap: () async{
+                          List<Map<String, dynamic>>? updatedCategories = await show(context);
+                          if (updatedCategories != null && areListsEqual(categories, updatedCategories)) {
+                            print(areListsEqual(categories,updatedCategories));
+                            print("Conditions met, updating state");
+                            setState(() {
+                              subjectsWithCheck = List.from(updatedCategories.map((item) => Map<String, dynamic>.from(item)));
+                            });
+                          } else if (updatedCategories == null) {
+                            print("Updated Categories is null, not updating state");
                           } else {
-                            return SizedBox.shrink();  // Widget trống cho các mục không được chọn
+                            print("Conditions not met, not updating state");
                           }
-                        }).toList(),
-                        GestureDetector(
-                          onTap: () async{
-                            List<Map<String, dynamic>>? updatedCategories = await show(context);
-                            if (updatedCategories != null && areListsEqual(categories, updatedCategories)) {
-                              print(areListsEqual(categories,updatedCategories));
-                              print("Conditions met, updating state");
-                              setState(() {
-                                subjectsWithCheck = List.from(updatedCategories.map((item) => Map<String, dynamic>.from(item)));
-                              });
-                            } else if (updatedCategories == null) {
-                              print("Updated Categories is null, not updating state");
-                            } else {
-                              print("Conditions not met, not updating state");
-                            }
 
 
-                          },
-                          child: Icon(
-                            Icons.add_circle,
-                            color: Colors.white,
-                            size: 28,
-                          ),
+                        },
+                        child: Icon(
+                          Icons.add_circle,
+                          color: Colors.white,
+                          size: 28,
                         ),
-                      ],
-                    )
+                      ),
+                    ],
+                  )
 
 
-                  ],
-                ),
+                ],
               ),
-              Container(
-                margin: EdgeInsets.only(top: 10,left: 200),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color:  Color(0xFFEDAC02)
-                      ),
-                      child: TextButton(
-                        child: Text('Save',style: TextStyle(color:Color(0xFF1F3F9F),fontWeight: FontWeight.bold),),
-                        onPressed: () {
-                          updateStudent(emailController.text,widget.id,fullNameController.text,addressController.text, classNameController.text, phoneController.text, double.parse(avgController.text), int.parse(dobController.text));
-                          Navigator.of(context).pop();
-                        },
-                      ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10,left: 200),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color:  Color(0xFFEDAC02)
                     ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.white,
-                              width: 1
-                          ),
-                          borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: TextButton(
-                        child: Text('Cancel',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                        onPressed: () {
-                          Navigator.of(context).pop(null);
-                        },
-                      ),
+                    child: TextButton(
+                      child: Text('Save',style: TextStyle(color:Color(0xFF1F3F9F),fontWeight: FontWeight.bold),),
+                      onPressed: () {
+                        updateStudent(emailController.text,widget.id,fullNameController.text,addressController.text, classNameController.text, phoneController.text, double.parse(avgController.text), int.parse(dobController.text));
+                        Navigator.of(context).pop();
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.white,
+                            width: 1
+                        ),
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: TextButton(
+                      child: Text('Cancel',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                      onPressed: () {
+                        Navigator.of(context).pop(null);
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
-          )
-      ),
+            ),
+          ],
+        )
+    ),
   );
   Future<List<Map<String, dynamic>>?> show(BuildContext context) async{
     List<Map<String, dynamic>> originalCategories = List.from(categories.map((item) => Map<String, dynamic>.from(item)));;
-     return await showDialog<List<Map<String, dynamic>>>(
+    return await showDialog<List<Map<String, dynamic>>>(
       context: context,
       builder: (context) {
         return StatefulBuilder(
@@ -788,7 +787,7 @@ class _StudentInfoWidgetState extends State<StudentInfo> {
         );
       },
     );
-    }
+  }
   bool areListsEqual(List a, List b) {
     if (a.length != b.length) {
       return false;
