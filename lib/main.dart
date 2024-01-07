@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qlsv/QLSV/screen.dart';
+import 'package:qlsv/screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:qlsv/search/search.dart';
 
-import 'QLSV/search/search.dart';
+
 
 void main() {
   runApp(MyApp());

@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qlsv/QLMH/studentSubject.dart';
 import 'package:qlsv/QLSV/addList.dart';
 import 'package:qlsv/QLSV/student.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+
 
 import '../search/search.dart';
-class StudentPage extends StatefulWidget{
+import 'addSubList.dart';
+class StudentSubPage extends StatefulWidget{
   @override
-  _PageWidget createState() => _PageWidget();
+  _SubPageWidget createState() => _SubPageWidget();
 }
 
-class _PageWidget extends State<StudentPage> {
+class _SubPageWidget extends State<StudentSubPage> {
   @override
   void initState() {
     final load = Provider.of<SearchStudent>(context,listen: false);
-    load.fetchStudents();
+    load.fetchStudentsSub();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final load = Provider.of<SearchStudent>(context);
@@ -26,21 +28,20 @@ class _PageWidget extends State<StudentPage> {
         children: [
           Container(
             margin: EdgeInsets.only(left: 25,bottom: 10),
-            child: AddListStudent(),
+            child: AddSubListStudent(),
           ),
           Expanded(child:
               ListView(
                 children: [
-                  for (final student in load.students.isNotEmpty ? load.students: load.students)
-                    StudentInfo(
+                  for (final student in load.studentsSub.isNotEmpty ? load.studentsSub: load.studentsSub)
+                    StudentSubInfo(
                       id: student['_id'],
                       fullName: student['fullName'] ?? '', // provide a default value if 'fullName' is null
                       classes: student['class'] ?? '', // provide a default value if 'class' is null
-                      averageScore: (student['averageScore'] ?? 0.0).toDouble(), // provide a default value if 'averageScore' is null
-                      dateOfBirth: student['dateOfBirth'] ?? '', // provide a default value if 'dateOfBirth' is null
-                      address: student['contactInfo']['address'] ?? '', // provide a default value if 'address' is null
-                      email: student['contactInfo']['email'] ?? '', // provide a default value if 'email' is null
-                      phoneNumber: student['contactInfo']['phoneNumber'] ?? '', // provide a default value if 'phoneNumber' is null
+                      credits: student['creditHours'] ?? 0, // provide a default value if 'averageScore' is null
+                      studentId: student['studentId'] ?? '', // provide a default value if 'dateOfBirth' is null
+                      status: student['registrationStatus'] ?? '', // provide a default value if 'address' is null
+                      term: student['semester'] ?? '', // provide a default value if 'email' is null
                       categoriess: student['registeredCourses'],
                     ),
                 ],

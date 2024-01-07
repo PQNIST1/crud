@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:qlsv/QLSV/screen.dart';
+import 'package:qlsv/screen.dart';
 import 'dart:convert';
 class StudentInfo extends StatefulWidget {
   final String id;

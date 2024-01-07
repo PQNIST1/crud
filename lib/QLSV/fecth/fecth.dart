@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../screen.dart';
+import '../../screen.dart';
 
 class FecthData {
   List<Map<String, dynamic>> categories = [

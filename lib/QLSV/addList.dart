@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:qlsv/QLSV/screen.dart';
+import 'package:qlsv/screen.dart';
 class AddListStudent extends StatefulWidget{
   @override
   _AddListWidget createState() => _AddListWidget();
